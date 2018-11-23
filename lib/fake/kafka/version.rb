@@ -1,5 +1,5 @@
 module Fake
-  module Kafka
-    VERSION = "0.1.0"
+  class Kafka
+    VERSION = "0.0.1-beta1"
   end
 end
