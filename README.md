@@ -1,15 +1,13 @@
 # Fake::Kafka
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/fake/kafka`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+It is a drop in replacement for ruby-kafka driver, it works as In-memory driver, useful for development and test environments
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'fake-kafka'
+	gem 'fake-kafka', git: 'git@github.com:catawiki/fake-kafka.git', tag: '0.0.1-beta1'
 ```
 
 And then execute:
@@ -22,7 +20,32 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Testing
+
+```ruby
+	require 'fake/kafka'
+	Catbus.kafka = Fake::Kafka.new
+```
+
+```ruby
+ describe 'consume' do
+    let(:payload) do
+      {
+        payload: {
+        	YOUR_CONTENT_HERE
+          },
+          event_name: EVENT_NAME
+        }
+      }
+    end
+     before do
+      Catbus.kafka.deliver_message payload, topic: 'test_YOUR_TOPIC'
+    end
+     it 'should consume message' do
+      expect(Resque).to receive(:enqueue).with(described_class, payload.to_json)
+      Catbus.consumer.send(:consume)
+    end
+```
 
 ## Development
 
@@ -32,4 +55,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/sarcilav/fake-kafka.
+Bug reports and pull requests are welcome on GitHub at https://github.com/catawiki/fake-kafka.
