@@ -7,7 +7,7 @@ It is a drop in replacement for ruby-kafka driver, it works as In-memory driver,
 Add this line to your application's Gemfile:
 
 ```ruby
-	gem 'fake-kafka', git: 'git@github.com:catawiki/fake-kafka.git', tag: '0.0.1-beta1'
+gem 'fake-kafka', git: 'git@github.com:catawiki/fake-kafka.git', tag: '0.0.1-beta1'
 ```
 
 And then execute:
@@ -22,10 +22,16 @@ Or install it yourself as:
 
 ### Testing
 
+Add the following lines to replace your kafka driver with the in-memory one.
+
+For example for catbus add the following on you `spec/rails_helper.rb`
+
 ```ruby
-	require 'fake/kafka'
-	Catbus.kafka = Fake::Kafka.new
+require 'fake/kafka'
+Catbus.kafka = Fake::Kafka.new
 ```
+
+#### Testing a consumer
 
 ```ruby
  describe 'consume' do
@@ -46,6 +52,28 @@ Or install it yourself as:
       Catbus.consumer.send(:consume)
     end
 ```
+
+#### Testing a producer
+```
+ describe produce' do
+    let(:payload) do
+      {
+        payload: {
+        	YOUR_CONTENT_HERE
+          },
+          event_name: EVENT_NAME
+        }
+      }
+    end
+     before do
+
+    end
+     it 'should consume message' do
+       expect(Catbus.kafka).to receive(:deliver_message).with(payload.to_json, topic: 'test_YOUR_TOPIC', key: nil)
+       YOUR_CONSUMER.process(PARAMS)
+    end
+```
+
 
 ## Development
 
