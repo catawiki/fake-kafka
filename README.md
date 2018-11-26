@@ -54,8 +54,8 @@ Catbus.kafka = Fake::Kafka.new
 ```
 
 #### Testing a producer
-```
- describe produce' do
+```ruby
+ describe 'produce' do
     let(:payload) do
       {
         payload: {
@@ -70,7 +70,7 @@ Catbus.kafka = Fake::Kafka.new
     end
      it 'should consume message' do
        expect(Catbus.kafka).to receive(:deliver_message).with(payload.to_json, topic: 'test_YOUR_TOPIC', key: nil)
-       YOUR_CONSUMER.process(PARAMS)
+       YOUR_PRODUCER.process(PARAMS)
     end
 ```
 
