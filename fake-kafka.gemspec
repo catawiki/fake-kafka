@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Fake Kafka Consumer and Producer.}
   spec.description   = %q{In memory 'kafka' instruments design for testing integrations with kafka.}
-  spec.homepage      = "https:://www.catawiki.nl"
+  spec.homepage      = "https://github.com/catawiki/fake-kafka"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
