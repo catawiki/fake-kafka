@@ -1,7 +1,8 @@
 require 'fake/kafka/version'
+require 'fake/kafka/batch'
+require 'fake/kafka/message'
 require 'fake/kafka/consumer'
 require 'fake/kafka/producer'
-require 'fake/kafka/message'
 
 module Fake
   class Kafka
