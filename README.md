@@ -38,16 +38,15 @@ Catbus.kafka = Fake::Kafka.new
     let(:payload) do
       {
         payload: {
-        	YOUR_CONTENT_HERE
-          },
-          event_name: EVENT_NAME
-        }
+          YOUR_CONTENT_HERE
+        },
+        event_name: EVENT_NAME
       }
     end
-     before do
+    before do
       Catbus.kafka.deliver_message payload, topic: 'test_YOUR_TOPIC'
     end
-     it 'should consume message' do
+    it 'should consume message' do
       expect(Resque).to receive(:enqueue).with(described_class, payload.to_json)
       Catbus.consumer.send(:consume)
     end
@@ -60,17 +59,13 @@ Catbus.kafka = Fake::Kafka.new
       {
         payload: {
         	YOUR_CONTENT_HERE
-          },
-          event_name: EVENT_NAME
-        }
+        },
+        event_name: EVENT_NAME
       }
     end
-     before do
-
-    end
-     it 'should consume message' do
-       expect(Catbus.kafka).to receive(:deliver_message).with(payload.to_json, topic: 'test_YOUR_TOPIC', key: nil)
-       YOUR_PRODUCER.process(PARAMS)
+    it 'should consume message' do
+      expect(Catbus.kafka).to receive(:deliver_message).with(payload.to_json, topic: 'test_YOUR_TOPIC', key: nil)
+      YOUR_PRODUCER.process(PARAMS)
     end
 ```
 
