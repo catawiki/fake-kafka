@@ -33,5 +33,11 @@ module Fake
     def producer(*)
       Producer.new(self)
     end
+
+    # Used to clean test between runs
+    def reset
+      @messages = []
+      @paused_partitions = {}
+    end
   end
 end
