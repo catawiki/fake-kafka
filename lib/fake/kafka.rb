@@ -34,8 +34,9 @@ module Fake
       Producer.new(self)
     end
 
-    # Used to clean test between runs
-    def reset
+    # Used to clean in-memory data
+    # Useful between test runs
+    def reset!
       @messages = []
       @paused_partitions = {}
     end

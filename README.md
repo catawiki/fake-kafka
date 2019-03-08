@@ -31,6 +31,26 @@ require 'fake/kafka'
 Catbus.kafka = Fake::Kafka.new
 ```
 
+#### Cleaning kafka memory (AKA 'databasecleaner')
+
+```ruby
+kafka.reset!
+```
+
+With catbus and rspec you can do something like within your rails_helper.rb
+
+```
+RSpec.configure do |config|
+  ...
+  config.around(:each) do |example|
+    ...
+    Catbus.kafka.reset!
+    ...
+  end
+end
+
+```
+
 #### Testing a consumer
 
 ```ruby
