@@ -5,12 +5,12 @@ class Fake::Kafka::Consumer
   end
 
   def subscribe(topic, **)
-    @topics << topic
+    @topics << topic.to_sym
   end
 
   def each_message(*options, &block)
     @kafka.messages.each do |message|
-      next unless @topics.include?(message.topic)
+      next unless @topics.include?(message.topic.to_sym)
 
       begin
         block.call(message)
