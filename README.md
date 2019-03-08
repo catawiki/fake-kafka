@@ -37,7 +37,7 @@ Catbus.kafka = Fake::Kafka.new
 kafka.reset!
 ```
 
-With catbus and rspec you can do something like within your rails_helper.rb
+With catbus and rspec you can do something like this within your rails_helper.rb
 
 ```
 RSpec.configure do |config|
