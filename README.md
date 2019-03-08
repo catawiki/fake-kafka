@@ -39,7 +39,7 @@ kafka.reset!
 
 With catbus and rspec you can do something like this within your rails_helper.rb
 
-```
+```ruby
 RSpec.configure do |config|
   ...
   config.around(:each) do |example|
