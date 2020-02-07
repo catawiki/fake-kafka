@@ -7,7 +7,7 @@ It is a drop in replacement for ruby-kafka driver, it works as In-memory driver,
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'fake-kafka', git: 'git@github.com:catawiki/fake-kafka.git', tag: '0.0.1-beta4'
+gem 'fake-kafka'
 ```
 
 And then execute:
