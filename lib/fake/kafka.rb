@@ -34,6 +34,13 @@ module Fake
       Producer.new(self)
     end
 
+    # https://github.com/zendesk/ruby-kafka/blob/v1.0.0/lib/kafka/client.rb#L307
+    # rubocop:disable Lint/UnusedMethodArgument, Metric/ParameterLists, Layout/LineLength
+    def async_producer(delivery_interval: 0, delivery_threshold: 0, max_queue_size: 1000, max_retries: -1, retry_backoff: 0, **options)
+      producer(**options)
+    end
+    # rubocop:enable all
+
     # Used to clean in-memory data
     # Useful between test runs
     def reset!
