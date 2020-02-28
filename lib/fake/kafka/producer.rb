@@ -13,4 +13,9 @@ class Fake::Kafka::Producer
       @kafka.deliver_message(value.to_s, **options)
     end
   end
+
+  # https://github.com/zendesk/ruby-kafka/blob/v1.0.0/lib/kafka/producer.rb#L285
+  def shutdown
+    # NOOP
+  end
 end
