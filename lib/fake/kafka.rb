@@ -30,9 +30,25 @@ module Fake
       Consumer.new(self)
     end
 
-    def producer(*)
+    # https://github.com/zendesk/ruby-kafka/blob/v1.0.0/lib/kafka/client.rb#L248-L261
+    # rubocop:disable Lint/UnusedMethodArgument, Metric/ParameterLists, Layout/LineLength
+    def producer(
+      compression_codec: nil,
+      compression_threshold: 1,
+      ack_timeout: 5,
+      required_acks: :all,
+      max_retries: 2,
+      retry_backoff: 1,
+      max_buffer_size: 1000,
+      max_buffer_bytesize: 10_000_000,
+      idempotent: false,
+      transactional: false,
+      transactional_id: nil,
+      transactional_timeout: 60
+    )
       Producer.new(self)
     end
+    # rubocop:enable all
 
     # https://github.com/zendesk/ruby-kafka/blob/v1.0.0/lib/kafka/client.rb#L307
     # rubocop:disable Lint/UnusedMethodArgument, Metric/ParameterLists, Layout/LineLength
