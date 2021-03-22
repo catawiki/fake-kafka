@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fake-kafka (0.0.1.pre.beta1)
+    fake-kafka (0.0.2)
 
 GEM
   remote: https://rubygems.org/
