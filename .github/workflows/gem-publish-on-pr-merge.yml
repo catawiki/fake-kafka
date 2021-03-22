@@ -1,0 +1,32 @@
+name: "Gem: Release new version on PR merge"
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    # Run if merged and has a version specifying label
+    if: >-
+      github.event.pull_request.merged &&
+      (
+        contains(github.event.pull_request.labels.*.name, 'version:major') ||
+        contains(github.event.pull_request.labels.*.name, 'version:minor') ||
+        contains(github.event.pull_request.labels.*.name, 'version:patch')
+      )
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+      with:
+        # A separate token is needed because the master branch is protected.
+        token: ${{ secrets.GEM_RELEASE_TOKEN }}
+        # Whether to configure the token or SSH key with the local git config
+        persist-credentials: true
+
+    - name: Release new version of the gem
+      uses: "catawiki/gem-release-action@v1"
+      with:
+        github_packages_owner: catawiki
+        github_packages_token: ${{ secrets.GEM_RELEASE_TOKEN }}
