@@ -30,3 +30,10 @@ jobs:
       with:
         github_packages_owner: catawiki
         github_packages_token: ${{ secrets.GEM_RELEASE_TOKEN }}
+
+    # # Assumes that the previous step builds and releases the gem to
+    # # rubygems.pkg.github.com and creates ~/.gem/credentials
+    # - name: Push new version to RubyGems.org
+    #   run: >-
+    #     printf -- ":rubygems: Bearer %s\n" "${{ secret.RUBYGEMS_ORG_RELEASE_TOKEN }}" >> "$HOME/.gem/credentials"
+    #     gem push fake-kafka-*.gem --key rubygems --host "https://rubygems.org"
