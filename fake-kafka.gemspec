@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Fake::Kafka::VERSION
   spec.authors       = ["Sebastian Arcila Valenzuela"]
   spec.email         = ["sebastianarcila@gmail.com"]
-
+  spec.license       = 'MIT'
   spec.summary       = %q{Fake Kafka Consumer and Producer.}
   spec.description   = %q{In memory 'kafka' instruments design for testing integrations with kafka.}
   spec.homepage      = "https://github.com/catawiki/fake-kafka"
