@@ -6,6 +6,7 @@
 /pkg/
 /spec/reports/
 /tmp/
+/fake-kafka-*.gem
 
 # rspec failure tracking
 .rspec_status
