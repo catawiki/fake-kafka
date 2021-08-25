@@ -83,7 +83,7 @@ end
         event_name: EVENT_NAME
       }
     end
-    it 'should consume message' do
+    it 'should produce message' do
       expect(Catbus.kafka).to receive(:deliver_message).with(payload.to_json, topic: 'test_YOUR_TOPIC', key: nil)
       YOUR_PRODUCER.process(PARAMS)
     end
