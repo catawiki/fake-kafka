@@ -26,7 +26,7 @@ jobs:
         persist-credentials: true
 
     - name: Release new version of the gem
-      uses: "catawiki/gem-release-action@v1"
+      uses: "catawiki/gem-release-action@v1.1"
       with:
         github_packages_owner: catawiki
         github_packages_token: ${{ secrets.GEM_RELEASE_TOKEN }}
