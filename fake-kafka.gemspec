@@ -5,7 +5,7 @@ require "fake/kafka/version"
 Gem::Specification.new do |spec|
   spec.name          = "fake-kafka"
   spec.version       = Fake::Kafka::VERSION
-  spec.authors       = ["Sebastian Arcila Valenzuela"]
+  spec.authors       = ["Catawiki", "Sebastian Arcila Valenzuela"]
   spec.email         = ["opensource@catawiki.nl"]
   spec.license       = 'MIT'
   spec.summary       = %q{Fake Kafka Consumer and Producer.}
