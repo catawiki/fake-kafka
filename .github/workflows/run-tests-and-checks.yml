@@ -1,0 +1,34 @@
+name: Run tests and checks
+
+on:
+  push:
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['3.1', '3.0', '2.7']
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true  # Installs and caches dependencies
+      - name: Run rubocop
+        run: bundle exec rubocop
+  test:
+    name: rspec
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['3.1', '3.0', '2.7']
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true  # Installs and caches dependencies
+      - name: Run tests
+        run: bundle exec rspec
