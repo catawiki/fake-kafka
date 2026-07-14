@@ -1,5 +1,9 @@
 # Fake::Kafka
 
+> [!NOTE]
+> This project has been archived, Catawiki will no longer maintain this repository. 
+> Feel free to maintain your own fork
+
 It is a drop in replacement for ruby-kafka driver, it works as In-memory driver, useful for development and test environments
 
 ## Installation
